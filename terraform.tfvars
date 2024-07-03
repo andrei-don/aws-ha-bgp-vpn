@@ -1,0 +1,9 @@
+cloud_vpc_cidr            = "10.0.0.0/16"
+cloud_subnet_cidr_a       = "10.0.1.0/24"
+cloud_subnet_cidr_b       = "10.0.2.0/24"
+onprem_vpc_cidr           = "172.16.0.0/16"
+onprem_subnet_cidr_a      = "172.16.2.0/24"
+onprem_subnet_cidr_b      = "172.16.3.0/24"
+onprem_subnet_public_cidr = "172.16.1.0/24"
+region                    = "eu-west-1"
+onprem_bgp_asn            = 65020
