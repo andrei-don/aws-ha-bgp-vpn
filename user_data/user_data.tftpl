@@ -1,0 +1,12 @@
+#!/bin/bash -xe
+apt-get update && apt-get install -y strongswan wget
+mkdir /home/ubuntu/vpn_setup
+cd /home/ubuntu/vpn_setup
+wget https://raw.githubusercontent.com/andrei-don/aws-ha-bgp-vpn/main/scripts/ffr-install.sh
+wget https://raw.githubusercontent.com/andrei-don/aws-ha-bgp-vpn/main/scripts/51-eth1.yaml
+wget https://raw.githubusercontent.com/andrei-don/aws-ha-bgp-vpn/main/scripts/ipsec-vti.sh
+wget https://raw.githubusercontent.com/andrei-don/aws-ha-bgp-vpn/main/scripts/ipsec.conf
+wget https://raw.githubusercontent.com/andrei-don/aws-ha-bgp-vpn/main/scripts/ipsec.secrets
+chown ubuntu:ubuntu /home/ubuntu/vpn_setup -R
+cp /home/ubuntu/vpn_setup/51-eth1.yaml /etc/netplan
+netplan --debug apply
