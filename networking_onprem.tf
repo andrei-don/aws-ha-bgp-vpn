@@ -80,13 +80,13 @@ resource "aws_route" "onprem_to_internet" {
 resource "aws_route" "onprem_to_cloud_a" {
   route_table_id         = aws_route_table.onprem_priv_a.id
   destination_cidr_block = var.cloud_vpc_cidr
-  gateway_id             = aws_internet_gateway.onprem.id
+  network_interface_id   = aws_network_interface.onprem_private_a.id
 }
 
 resource "aws_route" "onprem_to_cloud_b" {
   route_table_id         = aws_route_table.onprem_priv_b.id
   destination_cidr_block = var.cloud_vpc_cidr
-  gateway_id             = aws_internet_gateway.onprem.id
+  network_interface_id   = aws_network_interface.onprem_private_b.id
 }
 
 resource "aws_route_table_association" "onprem_a" {
@@ -131,4 +131,3 @@ resource "aws_vpc_endpoint" "onprem_ssmmessages" {
   security_group_ids  = [aws_security_group.onprem.id]
   private_dns_enabled = true
 }
-
